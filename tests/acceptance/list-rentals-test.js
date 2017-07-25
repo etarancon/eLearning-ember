@@ -35,7 +35,15 @@ test('should list available rentals.', function(assert) {
 
 test('should filter the list of rentals by city.', function(assert) {});
 
-test('should show details for a selected rental', function(assert) {});
+test('should show details for a selected rental', function(assert) {
+  visit('/rentals/grand-old-mansion');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/rentals/grand-old-mansion', 'should navigate to grand-old-mansion rental');
+    assert.equal(find('.description').length, 1);
+    assert.equal(find('h2.title').length, 1);
+  })
+});
 
 test('visiting /', function(assert) {
   visit('/');
